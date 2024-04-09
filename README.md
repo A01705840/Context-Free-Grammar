@@ -21,6 +21,7 @@ RULES
 10. And literals, which are numbers. This numbers can be represented as integer ans scalar types and does not distignuish them.
 11. These literals, are not limited to '0-9' the syntaxis can have logical characters like '-, +, /, **, *, 
 12. CLOSE must be the last line on every program.
-13. 
+
 ## References:
 Ryer, M. (September, 1978). PROGRAMMING IN HAL/S. Bitsavers. Retrieved 08 April. 2024, from https://bitsavers.org/pdf/intermetrics/programming_in_hal-s.pdf.
+Carrero, D. (n.d.). Ejemplo Básico de Programa en HAL/S. Programaci. Programacion. Retrieved 08 April. 2024, from https://programacion.net/articulo/ejemplo-basico-de-programa-en-hal-s_3294.
