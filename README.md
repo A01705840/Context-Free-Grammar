@@ -26,34 +26,57 @@ HAL/S was created with the intention of having reliability, efficiency and machi
 ### EXAMPLES
 --------------------------------------------
 PROGRAM ExampleHALS
+
 BEGIN
+
 -- Declaración de variables
+
 DCL ALTITUDE REAL INIT(0.0);
+
 DCL VELOCITY REAL INIT(0.0);
 
 -- Rutina principal
+
 CALL UpdateVelocity;
 
 -- Subrutina para actualizar la velocidad
+
 SUBROUTINE UpdateVelocity
+
 BEGIN
+
 -- Verificar la altitud y ajustar la velocidad
+
 IF ALTITUDE > 5000 THEN
+
 VELOCITY = 300.0;
+
 ELSE
+
 VELOCITY = 100.0;
+
 ENDIF;
 
+
 -- Mostrar la velocidad actual
+
 CALL DisplayVelocity(VELOCITY);
+
 END; -- Fin de la subrutina UpdateVelocity
 
+
 -- Subrutina para mostrar la velocidad
+
 SUBROUTINE DisplayVelocity(VEL REAL)
+
 BEGIN
+
 PRINT('Velocity is: ', VEL);
+
 END; -- Fin de la subrutina DisplayVelocity
+
 END; -- Fin del programa
+
 -------------------------------------------------------
 (Carrero, n.d.)
 ## References:
