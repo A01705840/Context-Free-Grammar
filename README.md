@@ -8,7 +8,7 @@ HAL/S is a programming is a programming language for real time aerospace program
 
 HAL/S was created with the intention of having reliability, efficiency and machine independence, this means less programming training, and reuse of blocks of code for other perojects, without the access of the aerrospace hardware. (Ryer, 1978) 
 
-### RULES
+### RULES THAT'LL BE USED ON THE GRAMMAR
 1. Every program begins with the label PROGRAM or [NAME OF PROGRAM]
 2. Comments are initiated by C at the beginning
 3. All statements end with a semi-colon
@@ -23,7 +23,8 @@ HAL/S was created with the intention of having reliability, efficiency and machi
 12. These literals, are not limited to '0-9' the syntaxis can have logical characters like '-, +, /, **, , .' 
 13. CLOSE must be the last line on every program.
 
-
+## RULES OF HAL/S BUT NOT IN THE GRAMMAR
+1. Declare Statements: When a variable is a compound varibles, intergrated by other variables, they can be declared as a variable with the following syntax: DECLARE + Variable_name + : +  PROGRAM + atributes of the declare statement. These statements count as programs themselves, and have this same sintax.
 -------------------------------------------------------
 ## References:
 Ryer, M. (September, 1978). PROGRAMMING IN HAL/S. Bitsavers. Retrieved 08 April. 2024, from https://bitsavers.org/pdf/intermetrics/programming_in_hal-s.pdf.
