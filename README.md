@@ -23,62 +23,8 @@ HAL/S was created with the intention of having reliability, efficiency and machi
 12. These literals, are not limited to '0-9' the syntaxis can have logical characters like '-, +, /, **, , .' 
 13. CLOSE must be the last line on every program.
 
-### EXAMPLES
---------------------------------------------
-PROGRAM ExampleHALS
-
-BEGIN
-
--- Declaración de variables
-
-DCL ALTITUDE REAL INIT(0.0);
-
-DCL VELOCITY REAL INIT(0.0);
-
--- Rutina principal
-
-CALL UpdateVelocity;
-
--- Subrutina para actualizar la velocidad
-
-SUBROUTINE UpdateVelocity
-
-BEGIN
-
--- Verificar la altitud y ajustar la velocidad
-
-IF ALTITUDE > 5000 THEN
-
-VELOCITY = 300.0;
-
-ELSE
-
-VELOCITY = 100.0;
-
-ENDIF;
-
-
--- Mostrar la velocidad actual
-
-CALL DisplayVelocity(VELOCITY);
-
-END; -- Fin de la subrutina UpdateVelocity
-
-
--- Subrutina para mostrar la velocidad
-
-SUBROUTINE DisplayVelocity(VEL REAL)
-
-BEGIN
-
-PRINT('Velocity is: ', VEL);
-
-END; -- Fin de la subrutina DisplayVelocity
-
-END; -- Fin del programa
 
 -------------------------------------------------------
-(Carrero, n.d.)
 ## References:
 Ryer, M. (September, 1978). PROGRAMMING IN HAL/S. Bitsavers. Retrieved 08 April. 2024, from https://bitsavers.org/pdf/intermetrics/programming_in_hal-s.pdf.
 
