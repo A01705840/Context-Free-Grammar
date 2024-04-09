@@ -10,7 +10,7 @@ HAL/S was created with the intention of having reliability, efficiency and machi
 
 ### RULES THAT'LL BE USED ON THE GRAMMAR
 1. Every program begins with the label PROGRAM or [NAME OF PROGRAM]
-2. Comments are initiated by C at the beginning
+2. Comments are initiated by '--' at the beginning
 3. All statements end with a semi-colon
 4. Keyword are created by beginning a label DECLARE. Keywords are always declared before they are used. They are never 2 characters or less.
 5. Variables or Identifiers can be written within 1 and 30 characters in length and can use A-Z, 9-0, and underscores (_).
