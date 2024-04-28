@@ -41,9 +41,9 @@ Now that the rules are defined for the construction of the grammar, it is needed
    ## EXECUTABLE STATEMENTS
 ## LITERALS
 
-``
+```
 print('Hello World')
-``
+```
 ## References:
 Ryer, M. (September, 1978). PROGRAMMING IN HAL/S. Bitsavers. Retrieved 08 April. 2024, from https://bitsavers.org/pdf/intermetrics/programming_in_hal-s.pdf.
 
