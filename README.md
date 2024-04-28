@@ -17,11 +17,12 @@ HAL/S was created with the intention of having reliability, efficiency and machi
 6. After the label DECLARE, they come the executable statements.
 7. These executable statements are WRITE, READ. After the statment, it is followed by a parenthesis with a conexion number (N)
 8. At the end, there are delimiting statements, like CLOSE
-9. It also contains, Operators which are logical statements '-, +, /, **, ,'
-10. Two operators can never be together. If they are, they need to be parethesized ().
-11. And literals, which are numbers. This numbers can be represented as integer ans scalar types and does not distignuish them.
-12. These literals, are not limited to '0-9' the syntaxis can have logical characters like '-, +, /, **, , .' 
-13. CLOSE must be the last line on every program.
+   
+10. It also contains, Operators which are logical statements '-, +, /, **, ,'
+11. Two operators can never be together. If they are, they need to be parethesized ().
+12. And literals, which are numbers. This numbers can be represented as integer ans scalar types and does not distignuish them.
+13. These literals, are not limited to '0-9' the syntaxis can have logical characters like '-, +, /, **, , .' 
+14. CLOSE must be the last line on every program.
 
 ## RULES OF HAL/S BUT NOT IN THE GRAMMAR
 1. _Declare Statements_ : When a variable is a compound varibles, intergrated by other variables, they can be declared as a variable with the following syntax: DECLARE + [VARIABLE_NAME] + : +  PROGRAM + atributes of the declare statement. These statements count as programs themselves, and have this same sintax.
@@ -31,3 +32,7 @@ HAL/S was created with the intention of having reliability, efficiency and machi
 Ryer, M. (September, 1978). PROGRAMMING IN HAL/S. Bitsavers. Retrieved 08 April. 2024, from https://bitsavers.org/pdf/intermetrics/programming_in_hal-s.pdf.
 
 Carrero, D. (n.d.). Ejemplo Básico de Programa en HAL/S. Programaci. Programacion. Retrieved 08 April. 2024, from https://programacion.net/articulo/ejemplo-basico-de-programa-en-hal-s_3294.
+
+Gatevidyalay. (n.d.). Left Recursion | Left Recursion Elimination. Elearn. Retrieved 28 April. 2024, from https://elearn.daffodilvarsity.edu.bd/pluginfile.php/1868451/mod_folder/content/0/Lecture - 6 Left Recursion.pdf.
+
+Geeks for Geeks. (2021, June 11). Removal of ambiguity (Converting an Ambiguous grammar into Unambiguous grammar) - GeeksforGeeks. Geeksforgeeks. Retrieved 28 April. 2024, from https://geeksforgeeks.org/removal-of-ambiguity-converting-an-ambiguos-grammar-into-unambiguos-grammar/.
