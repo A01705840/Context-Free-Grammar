@@ -4,21 +4,41 @@ nltk.download('punkt')
 
 # Define a context-free grammar
 grammar = CFG.fromstring("""
-    S -> NP VP
-    NP -> Det N | Det N PP
-    PP -> P NP
-    VP -> V NP | VP PP
-    Det -> 'the' | 'a'
-    N -> 'man' | 'dog' | 'park'
-    P -> 'in' | 'with'
-    V -> 'saw' | 'ate' | 'walked'
+    S -> 'PROGRAM' ID 'BEGIN' DCL STL 'END'
+    ID -> [a-z A-Z][a-z A-Z 0-9_]
+    DCL -> DECL DCLP
+    DCLP -> DECL DCLP
+    DCLP ->
+    DECL -> 'DCL' ID TYPE 'INIT' VAL
+    TYPE -> 'REAL' | 'INT' | 'BOOL' | 'CHAR' | 'STRING'
+    VAL -> LIT | ID
+    STL -> ST STLP
+    STLP -> ST STLP
+    STLP ->
+    ST -> 'CALL' ID '(' ARG ');' | 'IF' CONDITION 'THEN' ST 'ELSE' ST 'ENDIF' | 'PRINT (' EXP ');'
+    ARG -> EXP ARGP
+    ARGP -> EXP ARGP
+    ARGP ->
+    CONDITION -> EXP RELOP EXP
+    EXP -> TERM ADDOP EXP | TERM
+    TERM -> FACTOR MULTOP TERM | FACTOR
+    FACTOR -> LIT | ID | '(' EXP ')'
+    LIT -> INTLIT | REALLIT | STRLIT | BOOLLIT | CHARLIT
+    INTLIT -> [0-9]+
+    REALLIT -> INTLIT'.'INTLIT
+    STRLIT -> '"'[a-zA-Z0-9?¿!¡_.,]'"'
+    BOOLLIT -> 'TRUE' | 'FALSE'
+    CHARLIT -> [A-Z]
+    ADDOP -> + | -
+    MULTOP -> * | /
+    RELOP -> < | > | <= | >= | ==
 """)
 
 # Create a parser with the defined grammar
 parser = nltk.ChartParser(grammar)
 
 # Input sentence to be parsed
-sentence = "the dog saw a man in the park"
+sentence = ""
 
 # Tokenize the sentence
 tokens = nltk.word_tokenize(sentence)
