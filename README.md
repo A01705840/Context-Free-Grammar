@@ -52,6 +52,7 @@ Now that the rules are defined for the construction of the grammar, it is needed
    ## LOGICAL STATEMENTS
    ## EXECUTABLE STATEMENTS
 ## LITERALS
+![image](https://github.com/A01705840/Context-Free-Grammar/assets/111139686/19ce8e75-943d-4941-bd2c-6faafc3d918c)
 
 ```
 print('Hello World')
