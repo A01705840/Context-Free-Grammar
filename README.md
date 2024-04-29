@@ -9,24 +9,36 @@ HAL/S is a programming is a programming language for real time aerospace program
 HAL/S was created with the intention of having reliability, efficiency and machine independence, this means less programming training, and reuse of blocks of code for other perojects, without the access of the aerrospace hardware. (Ryer, 1978) 
 
 ### RULES THAT'LL BE USED ON THE GRAMMAR
-1. Every program begins with the label PROGRAM + [NAME OF PROGRAM]
-2. Comments are initiated by '--' at the beginning
-3. All statements end with a semi-colon
-4. Keyword are created by beginning a label DECLARE or DCL. Keywords are always declared before they are used. They are never 2 characters or less.
-5. Variables or Identifiers can be written within 1 and 30 characters in length and can use A-Z, 9-0, and underscores (_).
-6. After the label DECLARE, they come the executable statements.
-7. These executable statements are WRITE, READ. After the statment, it is followed by a parenthesis with a conexion number (N)
-8. At the end, there are delimiting statements, like CLOSE
-   
-10. It also contains, Operators which are logical statements '-, +, /, **, ,'
-11. Two operators can never be together. If they are, they need to be parethesized ().
-12. And literals, which are numbers. This numbers can be represented as integer ans scalar types and does not distignuish them.
-13. These literals, are not limited to '0-9' the syntaxis can have logical characters like '-, +, /, **, , .' 
-14. END must be the last line on every program.
+1. A program consists of a PROGRAM declaration followed by an identifier, the keyword BEGIN, a list of declarations, a list of statements, and finally the keyword END.
+2. An identifier must start with a letter and can be followed by any combination of letters, digits, and underscores.
+3. Declarations can be a sequence of one or more individual declarations or can be empty.
+4. A declaration consists of the keyword DCL followed by an identifier, a type specifier, the keyword INIT, a value, and a semicolon.
+5. Types include REAL, INT, BOOL, CHAR, STRING, or any other valid data type.
+6. Values in declarations can be literals or identifiers.
+7. Statements in the program are a sequence of one or more individual statements or can be empty.
+8. Statements can be CALL statements, IF-ELSE statements, or PRINT statements.
+9. A CALL statement consists of the keyword CALL followed by an identifier representing a subroutine, followed by arguments enclosed in parentheses, and ends with a semicolon.
+10. An IF-ELSE statement begins with the keyword IF followed by a condition, the keyword THEN, a statement, the keyword ELSE, another statement, and finally the keyword ENDIF.
+11. Conditions in IF-ELSE statements consist of expressions separated by relational operators.
+12. Expressions can be arithmetic expressions consisting of terms separated by additive operators.
+13. Terms are composed of factors separated by multiplicative operators.
+14. Factors can be literals, identifiers, or expressions enclosed in parentheses.
+15. Literals can be integer literals, real literals, string literals, boolean literals, or character literals.
+16. Integer literals consist of one or more digits.
+17. Real literals consist of one or more digits followed by a decimal point and another sequence of digits.
+18. String literals are enclosed in double quotes and can contain any sequence of characters.
+19. Boolean literals are TRUE or FALSE.
+20 Character literals are enclosed in single quotes and represent a single character.
+21. Additive operators include addition (+) and subtraction (-).
+22. Multiplicative operators include multiplication (*) and division (/).
 
 ## RULES OF HAL/S BUT NOT IN THE GRAMMAR
-1. _Declare Statements_ : When a variable is a compound varibles, intergrated by other variables, they can be declared as a variable with the following syntax: DECLARE + [VARIABLE_NAME] + : +  PROGRAM + atributes of the declare statement. These statements count as programs themselves, and have this same sintax.
-2. _Function Statements_ : When a function variable is declared, it can be used with the standard functions syntaxis. They can be declared as a function with the following syntax: [FUNCTION_NAME] + : +  FUNCTION ([variable1, variable2,...]; + declare of variables and conditions.
+1. Labels are used to mark specific points in the code for referencing and branching. They typically end with a colon.
+2. Branching instructions allow the program to jump to a different part of the code based on certain conditions or unconditionally.
+3. Looping constructs like DO-WHILE or REPEAT-UNTIL are commonly used in HAL/S for repetitive tasks.
+4. HAL/S typically includes instructions for direct memory access, such as loading from or storing to specific memory locations.
+5. Subroutine calls allow for modular programming by invoking a separate block of code. This can improve code organization and reusability.
+6. Asynchronous events are used to respond to events in priority. HAL/S may include mechanisms for handling interrupts, allowing the program to respond to external events asynchronously.
 -------------------------------------------------------
 ## The Grammar
 Now that the rules are defined for the construction of the grammar, it is needed to make a tree. In order to make the tree clearer, some objects of the grammar will be defined better:
