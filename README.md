@@ -22,7 +22,7 @@ HAL/S was created with the intention of having reliability, efficiency and machi
 11. Two operators can never be together. If they are, they need to be parethesized ().
 12. And literals, which are numbers. This numbers can be represented as integer ans scalar types and does not distignuish them.
 13. These literals, are not limited to '0-9' the syntaxis can have logical characters like '-, +, /, **, , .' 
-14. CLOSE must be the last line on every program.
+14. END must be the last line on every program.
 
 ## RULES OF HAL/S BUT NOT IN THE GRAMMAR
 1. _Declare Statements_ : When a variable is a compound varibles, intergrated by other variables, they can be declared as a variable with the following syntax: DECLARE + [VARIABLE_NAME] + : +  PROGRAM + atributes of the declare statement. These statements count as programs themselves, and have this same sintax.
