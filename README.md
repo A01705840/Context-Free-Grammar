@@ -13,7 +13,7 @@ HAL/S was created with the intention of having reliability, efficiency and machi
 2. An identifier must start with a letter and can be followed by any combination of letters, digits, and underscores.
 3. Declarations can be a sequence of one or more individual declarations or can be empty.
 4. A declaration consists of the keyword DCL followed by an identifier, a type specifier, the keyword INIT, a value, and a semicolon.
-5. Types include REAL, INT, BOOL, CHAR, STRING, or any other valid data type.
+5. Types include REAL, INT, BOOL, CHAR or STRING.
 6. Values in declarations can be literals or identifiers.
 7. Statements in the program are a sequence of one or more individual statements or can be empty.
 8. Statements can be CALL statements, IF-ELSE statements, or PRINT statements.
