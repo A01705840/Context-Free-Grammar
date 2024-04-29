@@ -42,7 +42,7 @@ HAL/S was created with the intention of having reliability, efficiency and machi
 -------------------------------------------------------
 ## The Grammar
 Now that the rules are defined for the construction of the grammar, it is needed to make a tree. In order to make the tree clearer, some objects of the grammar will be defined better:
-```
+```py
 grammar = CFG.fromstring("""
     S -> 'PROGRAM' ID 'BEGIN' DCL STL 'END'
     ID -> [a-z A-Z][a-z A-Z 0-9_]
