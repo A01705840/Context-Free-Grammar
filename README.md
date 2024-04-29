@@ -12,7 +12,7 @@ HAL/S was created with the intention of having reliability, efficiency and machi
 1. Every program begins with the label PROGRAM + [NAME OF PROGRAM]
 2. Comments are initiated by '--' at the beginning
 3. All statements end with a semi-colon
-4. Keyword are created by beginning a label DECLARE. Keywords are always declared before they are used. They are never 2 characters or less.
+4. Keyword are created by beginning a label DECLARE or DCL. Keywords are always declared before they are used. They are never 2 characters or less.
 5. Variables or Identifiers can be written within 1 and 30 characters in length and can use A-Z, 9-0, and underscores (_).
 6. After the label DECLARE, they come the executable statements.
 7. These executable statements are WRITE, READ. After the statment, it is followed by a parenthesis with a conexion number (N)
