@@ -45,35 +45,32 @@ HAL/S was created with the intention of having reliability, efficiency and machi
 ## The Grammar
 Now that the rules are defined for the construction of the grammar, it is needed to make a tree. In order to make the tree clearer, some objects of the grammar will be defined better:
 ```py
-grammar = CFG.fromstring("""
-    S -> 'PROGRAM' ID 'BEGIN' DCL STL 'END'
-    ID -> [a-z A-Z][a-z A-Z 0-9_]
+rammar = CFG.fromstring("""
+    S -> 'PROGRAM' ID 'BEGIN' DCL STL 'END' ';'
+    ID -> 'ExampleHAL' | 'ALTITUDE' | 'VELOCITY' | 'UpdateVelocity' | 'DisplayVelocity' | 'SUBROUTINE' | 'Altitude' | 'below' | 'above' | 'is' | CHAR ID
     DCL -> DECL DCLP
-    DCLP -> DECL DCLP
-    DCLP ->
-    DECL -> 'DCL' ID TYPE 'INIT' VAL
+    DCLP -> DECL DCLP | 
+    DECL -> 'DCL' ID TYPE 'INIT' '(' VAL ')' ';'
     TYPE -> 'REAL' | 'INT' | 'BOOL' | 'CHAR' | 'STRING'
     VAL -> LIT | ID
     STL -> ST STLP
-    STLP -> ST STLP
-    STLP ->
-    ST -> 'CALL' ID '(' ARG ');' | 'IF' CONDITION 'THEN' ST 'ELSE' ST 'ENDIF' | 'PRINT (' EXP ');'
-    ARG -> EXP ARGP
-    ARGP -> EXP ARGP
-    ARGP ->
+    STLP -> ST STLP | 
+    ST -> 'CALL' ID ';' | 'IF' CONDITION 'THEN' STL 'ELSE' STL 'ENDIF' ';' | 'PRINT' '(' EXP ')' ';' | 'SUBROUTINE' ID 'BEGIN' STL 'END' ';'
     CONDITION -> EXP RELOP EXP
-    EXP -> TERM ADDOP EXP | TERM
+    EXP -> TERM ADDOP EXP | TERM | ID
     TERM -> FACTOR MULTOP TERM | FACTOR
     FACTOR -> LIT | ID | '(' EXP ')'
     LIT -> INTLIT | REALLIT | STRLIT | BOOLLIT | CHARLIT
-    INTLIT -> [0-9]+
-    REALLIT -> INTLIT'.'INTLIT
-    STRLIT -> '"'[a-zA-Z0-9?¿!¡_.,]'"'
+    INTLIT -> DIGIT INTLIT | DIGIT
+    REALLIT -> INTLIT '.' INTLIT
+    STRLIT -> '"' CHAR '"'
     BOOLLIT -> 'TRUE' | 'FALSE'
-    CHARLIT -> [A-Z]
-    ADDOP -> + | -
-    MULTOP -> * | /
-    RELOP -> < | > | <= | >= | ==
+    CHAR -> 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z' | ' ' | '.' | '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '1000'
+    CHARLIT -> CHAR | CHAR CHARLIT
+    ADDOP -> '+' | '-' | '='
+    MULTOP -> '*' | '/'
+    RELOP -> '<' | '>' | '<=' | '>=' | '=='
+    DIGIT -> '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '.'
 """)
 ```
 ## PROGRAM
