@@ -73,20 +73,7 @@ rammar = CFG.fromstring("""
     DIGIT -> '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '.'
 """)
 ```
-## PROGRAM
 
-## COMMENTS
-
-## STATEMENT
-   ## VARIABLES
-   ## LOGICAL STATEMENTS
-   ## EXECUTABLE STATEMENTS
-## LITERALS
-![image](https://github.com/A01705840/Context-Free-Grammar/assets/111139686/19ce8e75-943d-4941-bd2c-6faafc3d918c)
-
-```
-print('Hello World')
-```
 ## References:
 Ryer, M. (September, 1978). PROGRAMMING IN HAL/S. Bitsavers. Retrieved 08 April. 2024, from https://bitsavers.org/pdf/intermetrics/programming_in_hal-s.pdf.
 
