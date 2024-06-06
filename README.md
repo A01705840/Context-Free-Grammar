@@ -119,8 +119,8 @@ sentences = [
             PRINT ( VELOCITY ) ;
         END ;
     END ;
-]
     """
+]
 ```
 
 ## Step Five
