@@ -1,6 +1,5 @@
 # Context-Free-Grammar
 
-** Este trabajo aún no está acabado :( **
 Evidencia 2 para TC2037 Implementation of Computational Methods
 
 ## Description
@@ -44,6 +43,11 @@ HAL/S was created with the intention of having reliability, efficiency and machi
 -------------------------------------------------------
 ## The Grammar
 Now that the rules are defined for the construction of the grammar, it is needed to make a tree. In order to make the tree clearer, some objects of the grammar will be defined better:
+
+In this code the Natural Language ToolKit is used in order to detect the programming language. 
+
+### Step One
+The Context Free Grammar is defined with the function CFG.fromstring(). 
 ```py
 rammar = CFG.fromstring("""
     S -> 'PROGRAM' ID 'BEGIN' DCL STL 'END' ';'
@@ -73,6 +77,28 @@ rammar = CFG.fromstring("""
     DIGIT -> '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '.'
 """)
 ```
+
+## Step Two
+Create a parser that can analyze the defined grammar.
+```py
+custom_parser = nltk.ChartParser(grammar)
+```
+
+## Step Three
+Since the nature of the program is to be written on lines per order, to be tokenized, it needs to come together on a single line.
+```py
+# Define a custom tokenizer
+def custom_tokenize(sentence):
+    # Tokenize the sentence using nltk's word_tokenize
+    tokens = nltk.word_tokenize(sentence)
+    # Join tokens and then split by space to properly handle complex tokens
+    joined = " ".join(tokens)
+    # Manually add spaces around special characters to ensure they are tokenized correctly
+    for char in '();,."<>=':
+        joined = joined.replace(char, f' {char} ')
+    return joined.split()
+```
+## Step Four
 
 ## References:
 Ryer, M. (September, 1978). PROGRAMMING IN HAL/S. Bitsavers. Retrieved 08 April. 2024, from https://bitsavers.org/pdf/intermetrics/programming_in_hal-s.pdf.
