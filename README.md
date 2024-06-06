@@ -125,7 +125,7 @@ sentences = [
 
 ## Step Five
 Tokenize the sentences to see the generated trees if any. For this procedure the function costum_tokenize is used. Following up with the display of trees.
-```
+```py
 # Tokenize and parse each sentence using the custom tokenizer
 for sentence in sentences:
     tokens = custom_tokenize(sentence.strip())
