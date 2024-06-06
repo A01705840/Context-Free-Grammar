@@ -180,7 +180,7 @@ For the ExampleHAL program this is the resulting tree
    |      |    |   |      |       |   |    |   |   |      |      |    |      |               |     |   |    |   |   |      |      |    |      |               |     |    |    |            |         |
 PROGRAM BEGIN END  ;  ExampleHAL DCL INIT  (   )   ;   ALTITUDE REAL  0      .               0    DCL INIT  (   )   ;   VELOCITY REAL  0      .               0    ...  CALL  ;      UpdateVelocity ...
 ```
-For ExampleHAL2 program
+For ExampleHAL2 program. Because of the caracter limit, it looks distorted:
 ```
                                                                                                                            S                                      
 
