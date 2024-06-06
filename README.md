@@ -51,7 +51,7 @@ The Context Free Grammar is defined with the function CFG.fromstring().
 ```py
 rammar = CFG.fromstring("""
     S -> 'PROGRAM' ID 'BEGIN' DCL STL 'END' ';'
-    ID -> 'ExampleHAL' | 'ALTITUDE' | 'VELOCITY' | 'UpdateVelocity' | 'DisplayVelocity' | 'SUBROUTINE' | 'Altitude' | 'below' | 'above' | 'is' | CHAR ID
+    ID -> 'ExampleHAL' | 'ExampleHAL2' | 'ALTITUDE' | 'VELOCITY' | 'UpdateVelocity' | 'DisplayVelocity' | 'SUBROUTINE' | 'Altitude' | 'below' | 'above' | 'is' | CHAR ID
     DCL -> DECL DCLP
     DCLP -> DECL DCLP | 
     DECL -> 'DCL' ID TYPE 'INIT' '(' VAL ')' ';'
@@ -99,7 +99,123 @@ def custom_tokenize(sentence):
     return joined.split()
 ```
 ## Step Four
+Define the sentences on testing. On both of this tests, the resulting tree should be displayed.
+```
+sentences = [
+    """
+    PROGRAM ExampleHAL BEGIN
+        DCL ALTITUDE REAL INIT ( 0.0 ) ; 
+        DCL VELOCITY REAL INIT ( 0.0 ) ; 
+        CALL UpdateVelocity ; 
+        END ;
+    """,
+    """
+    PROGRAM ExampleHAL2 BEGIN
+        DCL ALTITUDE REAL INIT ( 0.0 ) ;
+        DCL VELOCITY REAL INIT ( 0.0 ) ;
+        CALL DisplayVelocity ;
 
+        SUBROUTINE DisplayVelocity BEGIN
+            PRINT ( VELOCITY ) ;
+        END ;
+    END ;
+
+    """
+```
+
+## Step Five
+Tokenize the sentences to see the generated trees if any. For this procedure the function costum_tokenize is used. Following up with the display of trees.
+```
+# Tokenize and parse each sentence using the custom tokenizer
+for sentence in sentences:
+    tokens = custom_tokenize(sentence.strip())
+    print(f"Tokens for '{sentence.strip()}': {tokens}")
+    trees = list(custom_parser.parse(tokens))
+    if trees:
+        print(f"Parse tree for '{sentence.strip()}':")
+        for tree in trees:
+            tree.pretty_print()
+    else:
+        print(f"No parse tree found for '{sentence.strip()}'")
+```
+
+# Tests
+For the ExampleHAL program this is the resulting tree
+```
+                                                                                             S                                                                                                
+
+    _________________________________________________________________________________________|____________________________________________________________________________________            
+
+   |      |    |   |      |                                                                       DCL                                                                             |           
+
+   |      |    |   |      |                         _______________________________________________|_______________________                                                       |           
+
+   |      |    |   |      |                        |                                                                      DCLP                                                    |           
+
+   |      |    |   |      |                        |                                                                 ______|________________________________________              |           
+
+   |      |    |   |      |                       DECL                                                             DECL                                             |             |           
+
+   |      |    |   |      |        ________________|_________________________                       ________________|_________________________                      |             |           
+
+   |      |    |   |      |       |   |    |   |   |      |      |          VAL                    |   |    |   |   |      |      |          VAL                    |             |           
+
+   |      |    |   |      |       |   |    |   |   |      |      |           |                     |   |    |   |   |      |      |           |                     |             |           
+
+   |      |    |   |      |       |   |    |   |   |      |      |          LIT                    |   |    |   |   |      |      |          LIT                    |             |           
+
+   |      |    |   |      |       |   |    |   |   |      |      |           |                     |   |    |   |   |      |      |           |                     |             |           
+
+   |      |    |   |      |       |   |    |   |   |      |      |        CHARLIT                  |   |    |   |   |      |      |        CHARLIT                  |             |           
+
+   |      |    |   |      |       |   |    |   |   |      |      |     ______|_______              |   |    |   |   |      |      |     ______|_______              |             |           
+
+   |      |    |   |      |       |   |    |   |   |      |      |    |           CHARLIT          |   |    |   |   |      |      |    |           CHARLIT          |            STL          
+
+   |      |    |   |      |       |   |    |   |   |      |      |    |       _______|_______      |   |    |   |   |      |      |    |       _______|_______      |          ___|__________________
+   |      |    |   |      |       |   |    |   |   |      |      |    |      |            CHARLIT  |   |    |   |   |      |      |    |      |            CHARLIT  |         ST              
+       |
+   |      |    |   |      |       |   |    |   |   |      |      |    |      |               |     |   |    |   |   |      |      |    |      |               |     |     ____|____________          |
+   |      |    |   |      ID      |   |    |   |   |      ID    TYPE CHAR   CHAR            CHAR   |   |    |   |   |      ID    TYPE CHAR   CHAR            CHAR  DCLP  |    |            ID       STLP
+   |      |    |   |      |       |   |    |   |   |      |      |    |      |               |     |   |    |   |   |      |      |    |      |               |     |    |    |            |         |
+PROGRAM BEGIN END  ;  ExampleHAL DCL INIT  (   )   ;   ALTITUDE REAL  0      .               0    DCL INIT  (   )   ;   VELOCITY REAL  0      .               0    ...  CALL  ;      UpdateVelocity ...
+```
+For ExampleHAL2 program
+```
+                                                                                                                           S                                      
+
+    _______________________________________________________________________________________________________________________|_____________________________________________________________________________________________________
+   |      |    |   |      |                                                                       DCL                                                             
+                                                               |
+   |      |    |   |      |                         _______________________________________________|_______________________                                       
+                                                               |
+   |      |    |   |      |                        |                                                                      DCLP                                    
+                                                               |
+   |      |    |   |      |                        |                                                                 ______|________________________________________                                                             |
+   |      |    |   |      |                       DECL                                                             DECL                                           
+  |                                                           STL
+   |      |    |   |      |        ________________|_________________________                       ________________|_________________________                    
+  |          __________________________________________________|_______________
+   |      |    |   |      |       |   |    |   |   |      |      |          VAL                    |   |    |   |   |      |      |          VAL                  
+  |         |                                                                 STLP
+   |      |    |   |      |       |   |    |   |   |      |      |           |                     |   |    |   |   |      |      |           |                   
+  |         |                                                              ____|__________________________
+   |      |    |   |      |       |   |    |   |   |      |      |          LIT                    |   |    |   |   |      |      |          LIT                  
+  |         |                                                             ST                              |
+   |      |    |   |      |       |   |    |   |   |      |      |           |                     |   |    |   |   |      |      |           |                   
+  |         |                       ______________________________________|_____________                  |
+   |      |    |   |      |       |   |    |   |   |      |      |        CHARLIT                  |   |    |   |   |      |      |        CHARLIT                
+  |         |                      |        |    |   |         |                       STL                |
+   |      |    |   |      |       |   |    |   |   |      |      |     ______|_______              |   |    |   |   |      |      |     ______|_______            
+  |         |                      |        |    |   |         |                     ___|____________     |
+   |      |    |   |      |       |   |    |   |   |      |      |    |           CHARLIT          |   |    |   |   |      |      |    |           CHARLIT          |         |                      |        |    |   |         |                    ST               |    |
+   |      |    |   |      |       |   |    |   |   |      |      |    |       _______|_______      |   |    |   |   |      |      |    |       _______|_______      |         |                      |        |    |   |         |           _________|_________       |    |
+   |      |    |   |      |       |   |    |   |   |      |      |    |      |            CHARLIT  |   |    |   |   |      |      |    |      |            CHARLIT  |         ST                     |        |    |   |         |          |    |    |   |    EXP     |    |
+   |      |    |   |      |       |   |    |   |   |      |      |    |      |               |     |   |    |   |   |      |      |    |      |               |     |     ____|_________             |        |    |   |         |          |    |    |   |     |      |    |
+   |      |    |   |      ID      |   |    |   |   |      ID    TYPE CHAR   CHAR            CHAR   |   |    |   |   |      ID    TYPE CHAR   CHAR            CHAR  DCLP  |    |         ID           |        |    |   |         ID         |    |    |   |     ID    STLP STLP
+   |      |    |   |      |       |   |    |   |   |      |      |    |      |               |     |   |    |   |   |      |      |    |      |               |     |    |    |         |            |        |    |   |         |          |    |    |   |     |      |    |
+PROGRAM BEGIN END  ;  ExampleHAL DCL INIT  (   )   ;   ALTITUDE REAL  0      .               0    DCL INIT  (   )   ;   VELOCITY REAL  0      .               0    ...  CALL  ;  DisplayVelocity SUBROUTINE BEGIN END  ;  DisplayVelocity PRINT  (    )   ;  VELOCITY ...  ...
+```
 ## References:
 Ryer, M. (September, 1978). PROGRAMMING IN HAL/S. Bitsavers. Retrieved 08 April. 2024, from https://bitsavers.org/pdf/intermetrics/programming_in_hal-s.pdf.
 
