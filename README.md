@@ -119,7 +119,7 @@ sentences = [
             PRINT ( VELOCITY ) ;
         END ;
     END ;
-
+]
     """
 ```
 
