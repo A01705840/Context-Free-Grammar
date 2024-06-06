@@ -216,6 +216,15 @@ For ExampleHAL2 program
    |      |    |   |      |       |   |    |   |   |      |      |    |      |               |     |   |    |   |   |      |      |    |      |               |     |    |    |         |            |        |    |   |         |          |    |    |   |     |      |    |
 PROGRAM BEGIN END  ;  ExampleHAL DCL INIT  (   )   ;   ALTITUDE REAL  0      .               0    DCL INIT  (   )   ;   VELOCITY REAL  0      .               0    ...  CALL  ;  DisplayVelocity SUBROUTINE BEGIN END  ;  DisplayVelocity PRINT  (    )   ;  VELOCITY ...  ...
 ```
+
+# Time Complexity Big O
+### Function costum_tokenize(sentence)
+The complexity is O(n), this is because the loops and functions, like .split(), .join() and .replace() are dependent on the lenght of the sentence provided.
+
+### Parsing 
+The complexity on the parse of trees, depends on the amount of sentences that have to be parsed (m). To be able to parse a grammar with ChartParser, in the worst case, the time complexity is O(n^3). n being the number of tokens passed on to .parse(). So the complexity ends up being, O(m*n^3), which represents the number of sentences (m), each being parsed by a complexity of O(n^3).
+
+### 
 ## References:
 Ryer, M. (September, 1978). PROGRAMMING IN HAL/S. Bitsavers. Retrieved 08 April. 2024, from https://bitsavers.org/pdf/intermetrics/programming_in_hal-s.pdf.
 
